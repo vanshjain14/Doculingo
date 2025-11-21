@@ -1,0 +1,149 @@
+/* FileUpload.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0f0f17, #1b1b2f, #202040);
+  background-size: 300% 300%;
+  animation: gradientFlow 20s ease infinite;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Upload Section */
+.upload-section {
+  text-align: center;
+  padding: 50px;
+  border-radius: 20px;
+  position: relative;
+  background: rgba(25, 25, 35, 0.85);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  animation: fadeIn 1.2s ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.upload-section:hover {
+  transform: translateY(-5px);
+}
+
+.upload-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #48c6ef, #6f86d6, #8e54e9, #4776e6);
+  background-size: 400% 400%;
+  animation: borderFlow 14s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+
+  pointer-events: none;   /* ✅ Fix: let clicks pass through */
+}
+
+/* Title */
+.upload-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #48c6ef;
+  text-shadow: 0 0 18px rgba(72, 198, 239, 0.6);
+}
+
+.upload-section p {
+  font-size: 15px;
+  color: #bbb;
+  margin-bottom: 25px;
+}
+
+/* Upload Box */
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.upload-label {
+  display: inline-block;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 2px dashed #6f86d6;
+  color: #48c6ef;
+  font-size: 15px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.35s ease;
+
+  position: relative; 
+  z-index: 2; /* ✅ Fix: make label clickable */
+}
+
+.upload-label:hover {
+  background: rgba(72, 198, 239, 0.1);
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 0 16px rgba(72, 198, 239, 0.3);
+}
+
+/* Upload Button */
+button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(270deg, #48c6ef, #6f86d6, #8e54e9, #4776e6);
+  background-size: 300% 300%;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: gradientFlow 8s ease infinite;
+}
+
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(142, 84, 233, 0.5);
+}
+
+button:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  color: #ff6b6b;
+  margin-top: 15px;
+  font-weight: 500;
+  font-size: 14px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Animations */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes borderFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

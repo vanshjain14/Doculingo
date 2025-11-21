@@ -1,0 +1,14 @@
+flask
+flask_cors
+langchain
+sentence-transformers
+faiss-cpu
+pypdf
+llama-cpp-python
+InstructorEmbedding
+langchain-community
+hf_xet
+transformers
+torch
+sentencepiece
+protobuf
